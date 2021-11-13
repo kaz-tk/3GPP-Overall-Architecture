@@ -20,7 +20,7 @@ done
 echo "PDF to image phase"
 ls
 sudo cp tools/policy.xml /etc/ImageMagick-6/ || :
-convert -density 400 -resize 3000^ ${FNAME}.pdf ${FNAME}.png
-convert -density 400 -resize 3000^ ${FNAME}.pdf ${FNAME}.jpg
+convert -density 400 -resize 3000^ ${FNAME}.pdf ${FNAME}.png  || :
+convert -density 400 -resize 3000^ ${FNAME}.pdf ${FNAME}.jpg  || :
 
 
