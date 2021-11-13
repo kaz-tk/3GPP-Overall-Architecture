@@ -1,8 +1,8 @@
 #!/bin/bash
 DEBIAN_FRONTEND=noninteractive
 FNAME=3GPP_Overall_Architecture_and_Specifications
-apt-get update  -qqqqy
-apt-get install -qqqqy libreoffice imagemagick
+sudo apt-get update  -qqqqy
+sudo apt-get install -qqqqy libreoffice imagemagick
 
 libreoffice --headless --convert-to pdf ${FNAME}.pptx
 
