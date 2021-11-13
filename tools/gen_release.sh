@@ -1,5 +1,7 @@
 #!/bin/bash
+DEBIAN_FRONTEND=noninteractive
 FNAME=3GPP_Overall_Architecture_and_Specifications
+apt-get update  -y
 apt-get install -y libreoffice imagemagick
 
 libreoffice7.1 --headless --convert-to pdf ${FNAME}.pptx
