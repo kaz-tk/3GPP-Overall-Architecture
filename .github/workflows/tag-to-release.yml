@@ -1,0 +1,68 @@
+name: generate release files
+
+# Controls when the workflow will run
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a one-line script
+        run: bash tools/gen_release.sh
+      - name: Create release
+        id: create_release
+        uses: actions/create-release@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: true
+          prerelease: false
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./3GPP_Overall_Architecture_and_Specifications.pptx
+          asset_name: 3GPP_Overall_Architecture_and_Specifications.pptx
+          asset_content_type: application/vnd.openxmlformats-officedocument.presentationml.presentation
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./3GPP_Overall_Architecture_and_Specifications.pdf
+          asset_name: 3GPP_Overall_Architecture_and_Specifications.pdf
+          asset_content_type: application/pdf
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./3GPP_Overall_Architecture_and_Specifications.png
+          asset_name: 3GPP_Overall_Architecture_and_Specifications.png
+          asset_content_type: image/png
+
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./3GPP_Overall_Architecture_and_Specifications.jpg
+          asset_name: 3GPP_Overall_Architecture_and_Specifications.jpg
+          asset_content_type: image/jpeg
+
+
