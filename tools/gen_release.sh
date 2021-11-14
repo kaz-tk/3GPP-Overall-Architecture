@@ -12,7 +12,7 @@ while $(/bin/true)
 do
   if [ -e "${FNAME}.pdf" ];then
     echo pdf file found
-    sleep 5
+    sleep 30
     break
   fi
 done
